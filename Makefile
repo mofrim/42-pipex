@@ -6,13 +6,14 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/02 00:03:28 by fmaurer           #+#    #+#              #
-#    Updated: 2024/10/02 00:17:56 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/10/10 11:09:36 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS_IN = ./pipex.c
+SRCS_IN = ./pipex.c \
+					./utils.c
 
 SRCS = $(patsubst ./%.c,%.c,$(SRCS_IN))
 
@@ -20,7 +21,14 @@ OBJDIR = obj
 OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+# CFLAGS = -Wall -Werror -Wextra
+CFLAGS =
+
+# adding libft
+LIBFT_PATH	= ./libft
+LIBFT				= $(LIBFT_PATH)/libft.a
+LIB_PATHS += -L$(LIBFT_PATH)
+LIBS += -lft
 
 GRN = \033[1;32m
 RED = \033[1;31m
@@ -34,11 +42,17 @@ log_msg = $(MSGOPN) $(1) $(MSGEND)
 
 all: $(NAME)
 
-$(OBJDIR)/%.o: $(SRCS) | $(OBJDIR)
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@echo -e "$(call log_msg,Compiling $<...)"
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+$(NAME): $(OBJS) | $(LIBFT)
+	@echo -e "$(call log_msg,Compiling $(NAME)...)"
+	$(CC) $(CFLAGS) $(LIB_PATHS) -o $@ $^ $(LIBS)
+
+$(LIBFT):
+	@echo -e "$(call log_msg,Compiling libft...)"
+	make -C $(LIBFT_PATH) all
 
 debug: $(SRCS)
 	$(CC) -g $(CFLAGS) -o pipex $^
@@ -47,9 +61,15 @@ $(OBJDIR):
 	mkdir -p obj
 
 clean:
-	rm -rf $(OBJDIR)
+	@echo -e "$(call log_msg,Removing libft objs.)"
+	@make -s -C $(LIBFT_PATH) clean
+	@echo -e "$(call log_msg,Removing pipex objs.)"
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo -e "$(call log_msg,fcleaning libft..)"
+	@make -s -C $(LIBFT_PATH) fclean
+	@echo -e "$(call log_msg,fcleaning pipex..)"
+	@rm -f $(NAME)
 
 .PHONY: all clean fclean debug
