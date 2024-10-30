@@ -1,0 +1,26 @@
+[
+  {
+    "arguments": [
+      "/nix/store/gjknv9hm41i5adwzj8fddd4s970qsjpx-clang-wrapper-12.0.1/bin/clang",
+      "-c",
+      "-o",
+      "obj/pipex.o",
+      "pipex.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/08-pipex/pipexGH",
+    "file": "/home/frido/c0de/42/theCore/08-pipex/pipexGH/pipex.c",
+    "output": "/home/frido/c0de/42/theCore/08-pipex/pipexGH/obj/pipex.o"
+  },
+  {
+    "arguments": [
+      "/nix/store/gjknv9hm41i5adwzj8fddd4s970qsjpx-clang-wrapper-12.0.1/bin/clang",
+      "-c",
+      "-o",
+      "obj/utils.o",
+      "utils.c"
+    ],
+    "directory": "/home/frido/c0de/42/theCore/08-pipex/pipexGH",
+    "file": "/home/frido/c0de/42/theCore/08-pipex/pipexGH/utils.c",
+    "output": "/home/frido/c0de/42/theCore/08-pipex/pipexGH/obj/utils.o"
+  }
+]
