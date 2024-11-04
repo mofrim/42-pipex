@@ -6,14 +6,16 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/02 00:03:28 by fmaurer           #+#    #+#              #
-#    Updated: 2024/10/10 11:09:36 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/11/04 08:30:20 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 SRCS_IN = ./pipex.c \
-					./utils.c
+					./utils.c \
+					./get_exec_path.c \
+					./join_cmd_argv.c
 
 SRCS = $(patsubst ./%.c,%.c,$(SRCS_IN))
 
@@ -25,7 +27,7 @@ CC = clang
 CFLAGS =
 
 # adding libft
-LIBFT_PATH	= ./libft
+LIBFT_PATH	= ./libft/libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 LIB_PATHS += -L$(LIBFT_PATH)
 LIBS += -lft
