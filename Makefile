@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/02 00:03:28 by fmaurer           #+#    #+#              #
-#    Updated: 2024/11/04 08:30:20 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/11/05 06:59:47 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
 CC = clang
 # CFLAGS = -Wall -Werror -Wextra
-CFLAGS =
+CFLAGS = -g
 
 # adding libft
 LIBFT_PATH	= ./libft/libft

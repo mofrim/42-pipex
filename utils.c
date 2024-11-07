@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:55:21 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/11/04 20:23:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/11/05 07:02:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	free_ppx(t_ppx **ppx)
 		free_split(&(*ppx)->cmd1);
 	if ((*ppx)->cmd2)
 		free_split(&(*ppx)->cmd2);
-	if ((*ppx)->file1)
-		free((*ppx)->file1);
-	if ((*ppx)->file2)
-		free((*ppx)->file2);
+	// if ((*ppx)->file1)
+	// 	free((*ppx)->file1);
+	// if ((*ppx)->file2)
+	// 	free((*ppx)->file2);
 	free(*ppx);
 }
 
