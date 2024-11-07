@@ -2,3 +2,12 @@ test
 pipex
 obj/
 .cache/
+out
+in
+core
+bla
+ai_chat_for_elegant_solution
+ai_chat_for_elegant_solution.c
+b
+a
+compile_commands.json
